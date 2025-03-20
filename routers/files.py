@@ -12,6 +12,7 @@ router = APIRouter()
 async def create_files(
     files: Annotated[list[bytes], File(description="Multiple files as bytes")],
 ):
+    """Basic file upload."""
     return {"file_sizes": [len(file) for file in files]}
 
 
@@ -21,11 +22,13 @@ async def create_upload_files(
         list[UploadFile], File(description="Multiple files as UploadFile")
     ],
 ):
+    """Upload multiple files."""
     return {"filenames": [file.filename for file in files]}
 
 
 @router.get("/")
 async def main():
+    """Main page for file uploads."""
     content = """
 <body>
 <form action="/files/" enctype="multipart/form-data" method="post">
