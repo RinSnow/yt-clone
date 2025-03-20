@@ -1,4 +1,6 @@
-from fastapi import Depends, FastAPI
+""" Main file for the FastAPI application. """
+from fastapi import FastAPI
+
 from .routers import files
 
 app = FastAPI()
