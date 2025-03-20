@@ -1,0 +1,6 @@
+{
+    "pylint.args": [
+        "\"python.analysis.extraPaths\": [\"./yt_clone\"]",
+        "\"python.autoComplete.extraPaths\": [\"./yt_clone\"]"
+    ]
+}
