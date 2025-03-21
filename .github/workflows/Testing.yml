@@ -19,6 +19,8 @@ jobs:
     - name: Test with pytest
       run: pip install pytest pytest-cov
     - name: Run tests
-      run: pytest --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+      run: coverage run -m pytest  -v -s
+    - name: Generate coverage report
+      run: coverage report -m
       
     
