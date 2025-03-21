@@ -1,6 +1,6 @@
 """test_main.py - test cases for the main module."""
 from fastapi.testclient import TestClient
-from yt_clone.main import app
+from app.main import app
 
 client = TestClient(app)
 

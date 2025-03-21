@@ -4,10 +4,9 @@ from .routers import files
 
 app = FastAPI()
 
-
-app.include_router(files.router)
-
 @app.get("/HealthCheck")
-async def health_check():
+def health_check():
     """ Health check endpoint. """
     return {"status": "ok"}
+
+app.include_router(files.router)
