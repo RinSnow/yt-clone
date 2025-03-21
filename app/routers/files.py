@@ -1,11 +1,11 @@
 """This module contains the routes for file uploads."""
+
 from typing import Annotated
-from fastapi import APIRouter,File, UploadFile
+from fastapi import APIRouter, File, UploadFile
 from fastapi.responses import HTMLResponse
 
 
 router = APIRouter()
-
 
 
 @router.post("/files/")
