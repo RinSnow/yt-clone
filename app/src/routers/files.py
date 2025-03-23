@@ -15,6 +15,7 @@ async def create_files(
     """Basic file upload."""
     return {"file_sizes": [len(file) for file in files]}
 
+
 @router.post("/uploadfile/")
 async def create_upload_file(myfile: UploadFile = File(...)):
     """Upload file in chunks."""
