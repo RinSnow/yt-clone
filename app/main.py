@@ -1,7 +1,7 @@
 """ "Main module for the FastAPI application."""
 
 from fastapi import FastAPI
-from .routers import files
+from src.routers import files
 
 app = FastAPI()
 
