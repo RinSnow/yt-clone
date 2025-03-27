@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     db_pass:str
     db_name:str
     db_host:str
+    db_port:str
     model_config = SettingsConfigDict(env_file=".env")
 
 @lru_cache

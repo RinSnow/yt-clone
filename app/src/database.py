@@ -8,7 +8,7 @@ from .config import get_settings
 ###
 
 db_settings = get_settings()
-SQLALCHEMY_DATABASE_URL = f"postgresql://{db_settings.db_user}:{db_settings.db_pass}@{db_settings.db_host}:5432/yt-clone"
+SQLALCHEMY_DATABASE_URL = f"postgresql://{db_settings.db_user}:{db_settings.db_pass}@{db_settings.db_host}:{db_settings.db_port}/{db_settings.db_name}"
 print(db_settings.url_test)
 connect_args = {"check_same_thread": False}
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
