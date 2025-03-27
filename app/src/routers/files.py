@@ -16,14 +16,19 @@ async def create_files(
     return {"file_sizes": [len(file) for file in files]}
 
 
-@router.post("/uploadfiles/")
-async def create_upload_files(
-    files: Annotated[
-        list[UploadFile], File(description="Multiple files as UploadFile")
-    ],
-):
-    """Upload multiple files."""
-    return {"filenames": [file.filename for file in files]}
+@router.post("/uploadfile/")
+async def create_upload_file(myfile: UploadFile = File(...)):
+    """Upload file in chunks."""
+    file_size = myfile.spool_max_size
+    print(file_size)
+    with open(f"../uploads/{myfile.filename}", "wb") as buffer:
+        while True:
+            chunk = await myfile.read(2024)  # Read in 1KB chunks
+            print(len(chunk))
+            if not chunk:
+                break
+            buffer.write(chunk)
+    return {"filename": myfile.filename}
 
 
 @router.get("/")
@@ -35,8 +40,8 @@ async def main():
 <input name="files" type="file" multiple>
 <input type="submit">
 </form>
-<form action="/uploadfiles/" enctype="multipart/form-data" method="post">
-<input name="files" type="file" multiple>
+<form action="/uploadfile/" enctype="multipart/form-data" method="post">
+<input name="myfile" type="file" multiple>
 <input type="submit">
 </form>
 </body>
